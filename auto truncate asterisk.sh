@@ -7,6 +7,5 @@ CURRENT=$(df / | grep / | awk '{ print $5}' | sed 's%//g')
 THRESHOLD=90
 
 if [ "$CURRENT" -gt "$THRESHOLD"] ; then
-
-#currently need to define the specific files that should be cleared
-truncate -s 0 
+#this should only erase log files that have reached the threshold 
+truncate -s 0 /var/log/*THRESHOLD
